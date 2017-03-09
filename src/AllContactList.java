@@ -6,8 +6,8 @@
  * 
  * By: DA
  */
+import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -20,35 +20,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class AllContactList implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Person> allPersonArray = new ArrayList<Person>(); // Arraylist that store one object of one person info
-	private Scanner userInput;
-	private Person addPerson;
 	
 	/**
-	 * Defined default constructor to initialize Scanner userInput, ArrayList allPersonArray,
-	 * and Person addPerson.
+	 * This method adds a person object information to the ArrayList allPersonArray
+	 * By: DA
 	 */
-	public AllContactList() {
-		userInput = new Scanner(System.in);
-		addPerson = new Person();
-	}
-	
 	public void addContact(Person newPerson) {
 		allPersonArray.add(newPerson);
 		
-	}
-	
-	public void addContactTest() {
-		System.out.println(allPersonArray.toString());
-		
-	}
-
-	/**
-	 * This methods reads userInput for house, city, state, and zip. userInput
-	 * for Address class private data member variables
-	 */
-	public void readAddress() {
-
 	}
 
 	// FIXME: Not sure if needed and what to comment
@@ -56,14 +37,6 @@ public class AllContactList implements Serializable {
 	 * This method defines a toString method. Display all
 	 */
 	public String toString() {
-		/*
-		 * String allContactListInfo; allContactListInfo = ""; for (int i = 0; i
-		 * < numOfEntry; i++) { allContactListInfo =
-		 * arrayPerson[i].getFirstname() + " " + arrayPerson[i].getLastname() +
-		 * "\n"; sortArrayPerson[i] += arrayPerson[i];
-		 * 
-		 * }
-		 */
 		return "";
 	}
 
@@ -77,14 +50,14 @@ public class AllContactList implements Serializable {
 			System.out.println(allPersonArray.get(index));
 			index++;
 		}
-
 	}
 
 	/**
 	 * This method sorts the array list last name in alphabetical order. By: DA
 	 */
 	public void sortLastName() {
-
+		Collections.sort(allPersonArray);
+		printToConsole();
 	}
 
 	/**

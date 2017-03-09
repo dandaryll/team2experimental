@@ -5,8 +5,9 @@
  */
 import java.util.Scanner;
 import java.io.Serializable; // Interface used for saving and opening to disk
+import java.util.Collections;
 
-public class Person implements Serializable {
+public class Person implements Serializable, Comparable <Person>{
 	/**
 	 * This adds an id for the class Serializable
 	 */
@@ -54,9 +55,30 @@ public class Person implements Serializable {
 		System.out.print("Last name: ");
 		newLastname = userInput.nextLine();
 		if (newLastname.equals("")) {
+			userInput.close();
 			return false;
 		}
 		setLastname(newLastname);
+		readAddress();
+		System.out.print("E-mail: ");
+		String newEmail = userInput.nextLine();
+		setEmail(newEmail);
+		System.out.print("Phone: ");
+		String newPhone = userInput.nextLine();
+		setPhone(newPhone);
+		System.out.print("Notes: ");
+		String newNotes = userInput.nextLine();
+		setNotes(newNotes);
+		return true;
+	}
+	
+	/**
+	 * This methods reads userInput for house, city, state, and zip. userInput
+	 * for Address class private data member variables
+	 */
+	public void readAddress() {
+		Scanner userInput;
+		userInput = new Scanner(System.in);
 		System.out.print("House: ");
 		String newHouse = userInput.nextLine();
 		setHouse(newHouse);
@@ -69,16 +91,6 @@ public class Person implements Serializable {
 		System.out.print("Zip: ");
 		String newZip = userInput.nextLine();
 		setZip(newZip);
-		System.out.print("E-mail: ");
-		String newEmail = userInput.nextLine();
-		setEmail(newEmail);
-		System.out.print("Phone: ");
-		String newPhone = userInput.nextLine();
-		setPhone(newPhone);
-		System.out.print("Notes: ");
-		String newNotes = userInput.nextLine();
-		setNotes(newNotes);
-		return true;
 		
 	}
 	
@@ -254,4 +266,11 @@ public class Person implements Serializable {
 		return "Name: " + firstName + " " + lastName + "\n" + "Address: " + house + " " + city + ", " +
 			   state + " " + zip + "\n" + "E-mail: " + email + "\n" + "Phone: " + phone + "\n" + "Notes: " + notes;
 	}
+
+	@Override
+	public int compareTo(Person o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -17,11 +17,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;// Interface used for saving to disk
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-public class AllContactList implements Serializable {
+public class AllContactList implements Serializable, Comparator<Person> {
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Person> allPersonArray = new ArrayList<Person>(); // Arraylist that store one object of one person info
+	private List<Person> allPersonArray = new ArrayList<Person>(); // Arraylist that store one object of one person info
 	
 	/**
 	 * This method adds a person object information to the ArrayList allPersonArray
@@ -57,7 +58,7 @@ public class AllContactList implements Serializable {
 	 */
 	public void sortLastName() {
 		Collections.sort(allPersonArray);
-		printToConsole();
+		System.out.println(allPersonArray);
 	}
 
 	/**
@@ -128,6 +129,12 @@ public class AllContactList implements Serializable {
 		}
 		System.out.println("Read file:\n" + allPersonArray);
 		
+	}
+
+	@Override
+	public int compare(Person p1, Person p2) {
+		
+		return p1.compareTo(p2);
 	}
 
 }

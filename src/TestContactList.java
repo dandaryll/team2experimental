@@ -41,18 +41,29 @@ public class TestContactList {
 			System.out.println("Contact information not saved. Last name required.");
 		}
 		
+		// Object person2 from class Person
+		Person person3;
+		person3 = new Person();
+		if (person3.read()) { // add second contact
+			addressbook.addContact(person3); // adds to arraylist allPersonArray
+		}
+		else {
+			System.out.println("Contact information not saved. Last name required.");
+		}
+		
 		System.out.println("Here's the contact list: ");
 		
 		addressbook.printToConsole();
+		System.out.println("Here's the sorted contact list: ");
 		addressbook.sortFirstName();
 		addressbook.sortLastName();
 		addressbook.searchLastName();
 		
 		System.out.println("Calling method to save/open");
 		
-		addressbook.save(datafile);
+		//addressbook.save(datafile);
 		
-		addressbook.open(datafile);
+		//addressbook.open(datafile);
 		
 		userInput.close();
 

@@ -6,8 +6,9 @@
 import java.util.Scanner;
 import java.io.Serializable; // Interface used for saving and opening to disk
 import java.util.Collections;
+import java.util.Comparator;
 
-public class Person implements Serializable, Comparable <Person>{
+public class Person implements Serializable, Comparable<Person> {
 	/**
 	 * This adds an id for the class Serializable
 	 */
@@ -27,15 +28,16 @@ public class Person implements Serializable, Comparable <Person>{
 	 * Default constructor to initialize private data members
 	 */
 	public Person() {
-		firstName = "";
-		lastName  = "";
-		house     = "";
-		city      = "";
-		state     = "";
-		zip       = "";
-		email     = "";
-		phone     = "";
-		notes     = "";
+		super();
+		this.firstName   = firstName;
+		this.lastName    = lastName;
+		house       = "";
+		city        = "";
+		state       = "";
+		zip         = "";
+		email       = "";
+		phone       = "";
+		notes       = "";
 		newLastname = "";
 		
 	}
@@ -98,10 +100,7 @@ public class Person implements Serializable, Comparable <Person>{
 	 * Sets the value for firstname to "newFirstname". By: DA
 	 */
 	public void setFirstname(String newFirstname) {
-		if (lastName == "null") {
-			
-		}
-		firstName = newFirstname;
+		this.firstName = newFirstname;
 		
 	}
 
@@ -114,7 +113,7 @@ public class Person implements Serializable, Comparable <Person>{
 			return false;
 		}
 		else {
-			lastName = newLastname;
+			this.lastName = newLastname;
 			return true;
 		}
 		
@@ -267,10 +266,25 @@ public class Person implements Serializable, Comparable <Person>{
 			   state + " " + zip + "\n" + "E-mail: " + email + "\n" + "Phone: " + phone + "\n" + "Notes: " + notes;
 	}
 
+	
+	public Comparator<Person> PersonComparator = new Comparator<Person>() {
+		public int compare(Person person1, Person person2) {
+			String personName1 = person1.getLastname().toUpperCase();
+			String personName2 = person2.getLastname().toUpperCase();
+			return personName1.compareTo(personName2);
+		}
+	};
+
+	public int compare(Person p1, Person p2) {
+		return p1.compareTo(p2);
+	}
+
 	@Override
-	public int compareTo(Person o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(Person otherPerson) {
+		if (lastName.equals(lastName)) {
+			return firstName.compareTo(otherPerson.firstName);
+		}
+		return lastName.compareTo(otherPerson.lastName);
 	}
 
 }

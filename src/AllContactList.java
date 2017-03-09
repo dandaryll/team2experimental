@@ -6,19 +6,18 @@
  * 
  * By: DA
  */
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;// Interface used for saving to disk
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.ArrayList; // Class for saving added contact list to an ArrayList
+import java.io.FileInputStream; // Interface used for saving/opening to disk
+import java.io.FileNotFoundException; // Interface used for saving/opening to disk
+import java.io.FileOutputStream; // Interface used for saving/opening to disk
+import java.io.IOException; // Interface used for saving/opening to disk
+import java.io.ObjectInputStream; // Interface used for saving/opening to disk
+import java.io.ObjectOutputStream; // Interface used for saving/opening to disk
+import java.io.Serializable;// Interface used for saving/opening to disk
+import java.util.Collections; // Class for sorting the ArrayList
+import java.util.Comparator; // Class for sorting the ArrayList
+import java.util.List; // Class for sorting the ArrayList
+import java.util.Scanner;
 
 public class AllContactList implements Serializable, Comparator<Person> {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +31,8 @@ public class AllContactList implements Serializable, Comparator<Person> {
 		allPersonArray.add(newPerson);
 		
 	}
+	
+	
 
 	// FIXME: Not sure if needed and what to comment
 	/**
@@ -59,6 +60,13 @@ public class AllContactList implements Serializable, Comparator<Person> {
 	public void sortLastName() {
 		Collections.sort(allPersonArray);
 		System.out.println(allPersonArray);
+	}
+	
+	/**
+	 * Test ArrayList sort
+	 */
+	public void sortTest() {
+		
 	}
 
 	/**

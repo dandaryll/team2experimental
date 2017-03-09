@@ -28,9 +28,8 @@ public class Person implements Serializable, Comparable<Person> {
 	 * Default constructor to initialize private data members
 	 */
 	public Person() {
-		super();
-		this.firstName   = firstName;
-		this.lastName    = lastName;
+		firstName   = "";
+		lastName    = "";
 		house       = "";
 		city        = "";
 		state       = "";
@@ -50,17 +49,19 @@ public class Person implements Serializable, Comparable<Person> {
 	public boolean read() {
 		Scanner userInput;
 		userInput = new Scanner(System.in);
+		Person p1;
+		p1 = new Person();
 		// Setters
 		System.out.print("First name: ");
 		String newFirstname = userInput.nextLine();
-		setFirstname(newFirstname);
+		p1.setFirstname(newFirstname);
 		System.out.print("Last name: ");
-		newLastname = userInput.nextLine();
+		p1.newLastname = userInput.nextLine();
 		if (newLastname.equals("")) {
 			userInput.close();
 			return false;
 		}
-		setLastname(newLastname);
+		p1.setLastname(newLastname);
 		readAddress();
 		System.out.print("E-mail: ");
 		String newEmail = userInput.nextLine();
@@ -275,12 +276,19 @@ public class Person implements Serializable, Comparable<Person> {
 		}
 	};
 
-	public int compare(Person p1, Person p2) {
+	public int compareTo(Person p1, Person p2) {
 		return p1.compareTo(p2);
 	}
 
 	@Override
 	public int compareTo(Person otherPerson) {
+		String lastNameCompare;
+		if (lastName.equals(lastName)) {
+			lastNameCompare = lastName;
+		}
+		else {
+			lastNameCompare = firstName;
+		}
 		if (lastName.equals(lastName)) {
 			return firstName.compareTo(otherPerson.firstName);
 		}

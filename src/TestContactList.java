@@ -19,7 +19,8 @@ public class TestContactList {
 		AllContactList addressbook;
 		addressbook = new AllContactList();
 		
-		addressbook.open(datafile);
+		// FIXME: IF you move write first error would be eliminated
+		//addressbook.open(datafile);
 		
 		// Object person1 from class Person
 		Person person1;

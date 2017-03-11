@@ -28,6 +28,7 @@ public class Person implements Serializable, Comparable<Person> {
 	 * Default constructor to initialize private data members
 	 */
 	public Person() {
+		super();
 		firstName   = "";
 		lastName    = "";
 		house       = "";
@@ -49,19 +50,18 @@ public class Person implements Serializable, Comparable<Person> {
 	public boolean read() {
 		Scanner userInput;
 		userInput = new Scanner(System.in);
-		Person p1;
-		p1 = new Person();
+		
 		// Setters
 		System.out.print("First name: ");
 		String newFirstname = userInput.nextLine();
-		p1.setFirstname(newFirstname);
+		setFirstname(newFirstname);
 		System.out.print("Last name: ");
-		p1.newLastname = userInput.nextLine();
+		newLastname = userInput.nextLine();
 		if (newLastname.equals("")) {
 			userInput.close();
 			return false;
 		}
-		p1.setLastname(newLastname);
+		setLastname(newLastname);
 		readAddress();
 		System.out.print("E-mail: ");
 		String newEmail = userInput.nextLine();
@@ -101,7 +101,7 @@ public class Person implements Serializable, Comparable<Person> {
 	 * Sets the value for firstname to "newFirstname". By: DA
 	 */
 	public void setFirstname(String newFirstname) {
-		this.firstName = newFirstname;
+		firstName = newFirstname;
 		
 	}
 
@@ -114,7 +114,7 @@ public class Person implements Serializable, Comparable<Person> {
 			return false;
 		}
 		else {
-			this.lastName = newLastname;
+			lastName = newLastname;
 			return true;
 		}
 		
@@ -267,32 +267,13 @@ public class Person implements Serializable, Comparable<Person> {
 			   state + " " + zip + "\n" + "E-mail: " + email + "\n" + "Phone: " + phone + "\n" + "Notes: " + notes;
 	}
 
-	
-	public Comparator<Person> PersonComparator = new Comparator<Person>() {
-		public int compare(Person person1, Person person2) {
-			String personName1 = person1.getLastname().toUpperCase();
-			String personName2 = person2.getLastname().toUpperCase();
-			return personName1.compareTo(personName2);
-		}
-	};
-
-	public int compareTo(Person p1, Person p2) {
-		return p1.compareTo(p2);
-	}
-
 	@Override
 	public int compareTo(Person otherPerson) {
-		String lastNameCompare;
-		if (lastName.equals(lastName)) {
-			lastNameCompare = lastName;
+		if (this.lastName.equalsIgnoreCase(otherPerson.lastName)) {
+			return this.firstName.compareTo(otherPerson.firstName);
 		}
-		else {
-			lastNameCompare = firstName;
-		}
-		if (lastName.equals(lastName)) {
-			return firstName.compareTo(otherPerson.firstName);
-		}
-		return lastName.compareTo(otherPerson.lastName);
+		
+		return this.lastName.compareTo(otherPerson.lastName);
 	}
 
 }

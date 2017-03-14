@@ -9,10 +9,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Person implements Serializable, Comparable<Person> {
-	/**
-	 * This adds an id for the class Serializable
-	 */
-	private static final long serialVersionUID = 1423944182432811904L;
 	private String firstName;
 	private String lastName;
 	private String house;
@@ -28,7 +24,6 @@ public class Person implements Serializable, Comparable<Person> {
 	 * Default constructor to initialize private data members
 	 */
 	public Person() {
-		super();
 		firstName   = "";
 		lastName    = "";
 		house       = "";
@@ -58,7 +53,6 @@ public class Person implements Serializable, Comparable<Person> {
 		System.out.print("Last name: ");
 		newLastname = userInput.nextLine();
 		if (newLastname.equals("")) {
-			userInput.close();
 			return false;
 		}
 		setLastname(newLastname);
@@ -110,7 +104,7 @@ public class Person implements Serializable, Comparable<Person> {
 	 */
 	public boolean setLastname(String newLastname) {
 		if (newLastname.equals("")) {
-			System.out.println("Contact not added, last name is blank.");
+			System.out.println("Contact not added. Last name required.");
 			return false;
 		}
 		else {

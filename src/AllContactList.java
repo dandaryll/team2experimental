@@ -30,8 +30,6 @@ public class AllContactList implements Serializable {
 		allPersonArray.add(newPerson);
 		
 	}
-	
-	
 
 	// FIXME: Not sure if needed and what to comment
 	/**
@@ -56,7 +54,7 @@ public class AllContactList implements Serializable {
 	/**
 	 * This method sorts the array list last name in alphabetical order. By: DA
 	 */
-	public void sortLastName() {
+	public void sortAllContact() {
 		Collections.sort(allPersonArray);
 		System.out.println(allPersonArray);
 	}
@@ -127,13 +125,5 @@ public class AllContactList implements Serializable {
 		System.out.println("Read file:\n" + allPersonArray);
 		
 	}
-
-
-
-	/*@Override
-	public int compare(Person p1, Person p2) {
-		
-		return p1.compareTo(p2);
-	}*/
 
 }

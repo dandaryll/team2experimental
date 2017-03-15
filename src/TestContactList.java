@@ -1,4 +1,3 @@
-
 /**
  * This program allows a user to enter a new person into a contact list, print the entire contact list in the console,
  * search a person's information by last name, saves sessions on exit, and start the program again with saved info.
@@ -6,8 +5,6 @@
  * By: DA
  */
 import java.util.Scanner;
-
-import com.sun.jndi.cosnaming.IiopUrl.Address;
 
 public class TestContactList {
 
@@ -96,13 +93,13 @@ public class TestContactList {
 				addressbook.printToConsole();
 				System.out.println("Printing list printToConsole.");
 				addressbook.sortAllContact();
-				
+				done = false;
 				break;
 			case 2:
 				addressbook.printToConsole();
 				System.out.println("Printing list printToConsole.");
 				addressbook.sortAllContact();
-				
+				done = false;
 				break;
 				
 			case 3:
@@ -110,6 +107,7 @@ public class TestContactList {
 				break;
 			default:
 				System.out.println("Please select from 1-3");
+				done = false;
 				break;
 
 			}

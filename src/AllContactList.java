@@ -73,9 +73,18 @@ public class AllContactList implements Serializable {
 	 * This method returns and prints the search result according to last name.
 	 */
 	public void searchLastName(String searchPerson) {
-		int index = 0;
-		boolean found = false;
-		while (allPersonArray.size() > index) {
+		int i;
+		boolean matchfound = false;
+		for (i = 0; i < allPersonArray.size(); i++) {
+			if (allPersonArray.get(i).matchLastname(searchPerson)) {
+				System.out.println(allPersonArray.get(i).toString());
+				matchfound = true;
+			}
+		}
+		if (!matchfound) {
+			System.out.println("\n" + "Sorry match not found.\n");
+		}
+		/*while (allPersonArray.size() > index) {
 			if (allPersonArray.get(index).matchLastname(searchPerson)) {
 				System.out.println(allPersonArray.get(index).toString());
 				found = true;
@@ -84,7 +93,7 @@ public class AllContactList implements Serializable {
 		}
 		if (!found) {
 			System.out.println("\n" + "Sorry match not found.\n");
-		}
+		}*/
 
 	}
 
@@ -140,7 +149,7 @@ public class AllContactList implements Serializable {
 			c.printStackTrace();
 			return;
 		}
-		System.out.println("Read file:\n" + allPersonArray);
+		System.out.println("Contact List size: " + allPersonArray.size());
 		
 	}
 

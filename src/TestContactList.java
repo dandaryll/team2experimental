@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class TestContactList {
 
 	public static void main(String[] args) {
+		System.out.println("Welcome to the ContactLister2.0!");
 		// Object contactsEdit from class AllContactList
 		//AllContactList addressbook;
 		//addressbook = new AllContactList();
@@ -82,8 +83,8 @@ public class TestContactList {
 		while (!done) {
 			System.out.println("Show menu method call!");
 
-			System.out.println("Enter 1 to add contact. \n" + "Enter 2 to print list. \n" + "Enter 3 to exit."
-							   + "\nEnter 4 to search.");
+			System.out.print("[1] Add contact\n" + "[2] Print the contact list\n" + "[3] Search contact information\n"
+							 + "[4] Quit the program\n" + "Please select an option from the above menu: ");
 
 			menuchoice = userInput.nextLine();
 			switch (menuchoice) {
@@ -112,6 +113,7 @@ public class TestContactList {
 			case "4":
 				System.out.print("\nEnter last name to search: ");
 				String searchPerson = userInput.nextLine();
+				System.out.println("Search results: ");
 				addressbook.searchLastName(searchPerson);
 				done = false;
 				break;

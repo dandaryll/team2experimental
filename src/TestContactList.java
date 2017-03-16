@@ -9,16 +9,12 @@ import java.util.Scanner;
 public class TestContactList {
 
 	public static void main(String[] args) {
-		final String datafile = "Contactlist 2.0.sav";
-
-		showMenu();
-
 		// Object contactsEdit from class AllContactList
-		//AllContactList addressbook2;
-		//addressbook2 = new AllContactList();
+		//AllContactList addressbook;
+		//addressbook = new AllContactList();
 
 		// FIXME: IF you move save method first, error would be eliminated
-		// addressbook.open(datafile);
+		//addressbook.open(datafile);
 
 		// Object person1 from class Person
 		/*
@@ -56,12 +52,14 @@ public class TestContactList {
 		//addressbook2.sortFirstName();
 		//addressbook2.sortAllContact();
 		//addressbook2.searchLastName();
+		
+		showMenu();
+		
+		//System.out.println("Calling method to save/open");
 
-		System.out.println("Calling method to save/open");
+		//addressbook.save(datafile);
 
-		// addressbook.save(datafile);
-
-		// addressbook.open(datafile);
+		//addressbook.open(datafile);
 
 		// userInput.close();
 
@@ -70,40 +68,52 @@ public class TestContactList {
 	}
 
 	public static void showMenu() {
+		final String datafile = "Contactlist 2.0.sav";
 		Scanner userInput;
 		userInput = new Scanner(System.in);
 		Person newContact1;
 		AllContactList addressbook;
 		addressbook = new AllContactList();
-		int menuchoice;
+		String menuchoice;
 		boolean done = false;
+		
+		addressbook.open(datafile);
 		
 		while (!done) {
 			System.out.println("Show menu method call!");
 
-			System.out.println("Enter 1 to add contact. \n" + "Enter 2 to print list. \n" + "Enter 3 to exit.");
+			System.out.println("Enter 1 to add contact. \n" + "Enter 2 to print list. \n" + "Enter 3 to exit."
+							   + "\nEnter 4 to search.");
 
-			menuchoice = userInput.nextInt();
+			menuchoice = userInput.nextLine();
 			switch (menuchoice) {
-			case 1:
+			case "1":
 				newContact1 = new Person();
 				newContact1.read();
 				System.out.println("Adding contact!");
 				addressbook.addContact(newContact1);
+				System.out.println();
 				addressbook.printToConsole();
-				System.out.println("Printing list printToConsole.");
+				System.out.println("Sorting list!");
 				addressbook.sortAllContact();
 				done = false;
 				break;
-			case 2:
+			case "2":
 				addressbook.printToConsole();
-				System.out.println("Printing list printToConsole.");
+				System.out.println();
+				//System.out.println("Printing list printToConsole.");
 				addressbook.sortAllContact();
 				done = false;
 				break;
-				
-			case 3:
+			case "3":
+				addressbook.save(datafile);
 				done = true;
+				break;
+			case "4":
+				System.out.print("\nEnter last name to search: ");
+				String searchPerson = userInput.nextLine();
+				addressbook.searchLastName(searchPerson);
+				done = false;
 				break;
 			default:
 				System.out.println("Please select from 1-3");

@@ -256,6 +256,10 @@ public class Person implements Serializable, Comparable<Person> {
 		return notes;
 	}
 	
+	public boolean matchLastname(String lastNameToMatch) {
+		return (this.lastName.equalsIgnoreCase(lastNameToMatch));
+	}
+	
 	public String toString() { 
 		return "Name: " + firstName + " " + lastName + "\n" + "Address: " + house + " " + city + ", " +
 			   state + " " + zip + "\n" + "E-mail: " + email + "\n" + "Phone: " + phone + "\n" + "Notes: " + notes;

@@ -17,9 +17,12 @@ import java.io.Serializable;// Interface used for saving/opening to disk
 import java.util.Collections; // Class for sorting the ArrayList
 import java.util.Comparator; // Class for sorting the ArrayList
 import java.util.List; // Class for sorting the ArrayList
+import java.util.Scanner;
 
 public class AllContactList implements Serializable {
 	private static final long serialVersionUID = 1L;
+	private Scanner userInput;
+	private Person object1;
 	private ArrayList<Person> allPersonArray = new ArrayList<Person>(); // Arraylist that store one object of one person info
 	
 	/**
@@ -56,7 +59,7 @@ public class AllContactList implements Serializable {
 	 */
 	public void sortAllContact() {
 		Collections.sort(allPersonArray);
-		System.out.println(allPersonArray);
+		//System.out.println(allPersonArray);
 	}
 
 	/**
@@ -69,8 +72,20 @@ public class AllContactList implements Serializable {
 	/**
 	 * This method returns and prints the search result according to last name.
 	 */
-	public String searchLastName() {
-		return "";
+	public void searchLastName(String searchPerson) {
+		int index = 0;
+		boolean found = false;
+		while (allPersonArray.size() > index) {
+			if (allPersonArray.get(index).matchLastname(searchPerson)) {
+				System.out.println(allPersonArray.get(index).toString());
+				found = true;
+			}
+			index++;
+		}
+		if (!found) {
+			System.out.println("\n" + "Sorry match not found.\n");
+		}
+
 	}
 
 	/**
@@ -112,6 +127,9 @@ public class AllContactList implements Serializable {
 			
 			inObject.close();
 			inFile.close();
+		}
+		catch (FileNotFoundException fnf) {
+			return;
 		}
 		catch (IOException ioe) {
 			ioe.printStackTrace();

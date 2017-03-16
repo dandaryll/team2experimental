@@ -20,7 +20,10 @@ public class TestContactList {
 		System.out.println("Reached the end of main(), Program ran successfully.");
 
 	}
-
+	
+	/**
+	 * NOTE: CURRENTLY HAVE 29 LINES!
+	 */
 	public static void showMenu() {
 		boolean done = false;
 		addressbook.open(); // Opens existing ContactList file if any

@@ -47,25 +47,33 @@ public class Person implements Serializable, Comparable<Person> {
 		userInput = new Scanner(System.in);
 		
 		// Setters
-		System.out.print("First name: ");
+		System.out.print("First name or Press [0] to cancel: ");
 		String newFirstname = userInput.nextLine();
+		if (newFirstname.equalsIgnoreCase("0"))
+			return false;
 		setFirstname(newFirstname);
-		System.out.print("Last name: ");
+		System.out.print("Last name or Press [0] to cancel: ");
 		newLastname = userInput.nextLine();
-		if (newLastname.equals("")) {
+		if (newLastname.equals("") || newLastname.equalsIgnoreCase("0")) {
 			System.out.println("Contact information not added. Last name required.");
 			return false;
 		}
 		setLastname(newLastname);
 		readAddress();
-		System.out.print("E-mail: ");
+		System.out.print("E-mail or Press [0] to cancel: ");
 		String newEmail = userInput.nextLine();
+		if (newEmail.equalsIgnoreCase("0"))
+			return false;
 		setEmail(newEmail);
-		System.out.print("Phone: ");
+		System.out.print("Phone or Press [0] to cancel: ");
 		String newPhone = userInput.nextLine();
+		if (newPhone.equalsIgnoreCase("0"))
+			return false;
 		setPhone(newPhone);
-		System.out.print("Notes: ");
+		System.out.print("Notes or Press [0] to cancel: ");
 		String newNotes = userInput.nextLine();
+		if (newNotes.equalsIgnoreCase("0"))
+			return false;
 		setNotes(newNotes);
 		System.out.println("Contact information has been added successfully!");
 		return true;
@@ -78,26 +86,30 @@ public class Person implements Serializable, Comparable<Person> {
 	public void readAddress() {
 		Scanner userInput;
 		userInput = new Scanner(System.in);
-		System.out.print("House: ");
+		System.out.print("House or Press [0] to cancel: ");
 		String newHouse = userInput.nextLine();
 		setHouse(newHouse);
-		System.out.print("City: ");
+		System.out.print("City or Press [0] to cancel: ");
 		String newCity = userInput.nextLine();
 		setCity(newCity);
-		System.out.print("State: ");
+		System.out.print("State or Press [0] to cancel: ");
 		String newState = userInput.nextLine();
 		setState(newState);
-		System.out.print("Zip: ");
+		System.out.print("Zip or Press [0] to cancel: ");
 		String newZip = userInput.nextLine();
 		setZip(newZip);
-		
 	}
 	
 	/**
 	 * Sets the value for firstname to "newFirstname". By: DA
 	 */
-	public void setFirstname(String newFirstname) {
+	public boolean setFirstname(String newFirstname) {
+		if (newFirstname.equalsIgnoreCase("0")) {
+			TestContactList.showMenu();
+			return false;
+		}
 		firstName = newFirstname;
+		return true;
 		
 	}
 
@@ -120,47 +132,74 @@ public class Person implements Serializable, Comparable<Person> {
 	 * This method Sets the value for house to "newHouse".
 	 * By: DA
 	 */
-	public void setHouse(String newHouse) {
+	public boolean setHouse(String newHouse) {
+		if (newHouse.equalsIgnoreCase("0")) {
+			TestContactList.showMenu();
+			return false;
+		}
 		house = newHouse;
-		
+		return true;
 	}
 
 	/**
 	 * Sets the value for city to "newCity".
 	 * By: DA
 	 */
-	public void setCity(String newCity) { // newCity is a parameter
+	public boolean setCity(String newCity) { // newCity is a parameter
+		if (newCity.equalsIgnoreCase("0")) {
+			TestContactList.showMenu();
+			return false;
+		}
 		city = newCity;
-		
+		return true;
 	}
 
 	/**
 	 * Sets the value for state to "newState".
 	 * By: DA
 	 */
-	public void setState(String newState) { // newState is a parameter
+	public boolean setState(String newState) { // newState is a parameter
+		if (newState.equalsIgnoreCase("0")) {
+			TestContactList.showMenu();
+			return false;
+		}
 		state = newState;
+		return true;
 	}
 
 	/**
 	 * Sets the value for zip to "newZip".
 	 * By: DA
 	 */
-	public void setZip(String newZip) { // newZip is a parameter
+	public boolean setZip(String newZip) { // newZip is a parameter
+		if (newZip.equalsIgnoreCase("0")) {
+			TestContactList.showMenu();
+			return false;
+		}
 		zip = newZip;
+		return true;
 	}
 
 	/**
 	 * Sets the value for email to "newEmail". By: DA
 	 */
 	public boolean setEmail(String newEmail) {
-		if (newEmail.contains("@") && newEmail.contains(".")) {
+		Scanner userInput;
+		userInput = new Scanner(System.in);
+		if (newEmail.equalsIgnoreCase("0")) {
+			TestContactList.showMenu();
+			return false;
+		}
+		else if (newEmail.contains("@") && newEmail.contains(".")) {
 			email = newEmail;
 			return true;
 		}
 		else {
-			System.out.println("Invalid email!");
-			return false;
+			System.out.println("Invalid email, please try again with correct format!");
+			System.out.print("Re-enter e-mail: ");
+			newEmail = userInput.nextLine();
+			phone = newEmail;
+			return true;
 		}
 
 	}
@@ -168,21 +207,28 @@ public class Person implements Serializable, Comparable<Person> {
 	/**
 	 * Sets the value for phone to "newPhone". By: DA
 	 */
-	public void setPhone(String newPhone) {
+	public boolean setPhone(String newPhone) {
 		Scanner userInput;
 		userInput = new Scanner(System.in);
-		if (newPhone.length() > 13) {
+		if (newPhone.equalsIgnoreCase("0")) {
+			TestContactList.showMenu();
+			return false;
+		}
+		else if (newPhone.length() > 13) {
 			phone = newPhone;
+			return true;
 		}
 		else if (newPhone.length() == 10) {
 			newPhone = newPhone.substring(0, 3) + "-" + newPhone.substring(3, 6) + "-" + newPhone.substring(6, newPhone.length());
 			phone = newPhone;
+			return true;
 		}
 		else {
 			System.out.println("Invalid phone format, please use \"###-###-####\"");
 			System.out.print("Re-enter phone: ");
 			newPhone = userInput.nextLine();
 			phone = newPhone;
+			return true;
 		}
 
 	}
@@ -190,8 +236,13 @@ public class Person implements Serializable, Comparable<Person> {
 	/**
 	 * Sets the value for notes to "newNotes". By: DA
 	 */
-	public void setNotes(String newNotes) {
+	public boolean setNotes(String newNotes) {
+		if (newNotes.equalsIgnoreCase("0")) {
+			TestContactList.showMenu();
+			return false;
+		}
 		notes = newNotes;
+		return true;
 	}
 
 	/**

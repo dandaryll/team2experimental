@@ -30,6 +30,7 @@ public class AllContactList implements Serializable {
 	 */
 	public void addContact(Person newPerson) {
 		allPersonArray.add(newPerson);
+		
 	}
 
 	// FIXME: Not sure if needed and what to comment
@@ -71,13 +72,18 @@ public class AllContactList implements Serializable {
 	 * This method returns and prints the search result according to last name.
 	 */
 	public void searchLastName(String searchPerson) {
-		int i;
 		boolean matchfound = false;
-		for (i = 0; i < allPersonArray.size(); i++) {
+		for (int i = 0; i < allPersonArray.size(); i++) {
+			if(searchPerson.equalsIgnoreCase(allPersonArray.toString())) {
+			   System.out.println(allPersonArray.get(i).toString());
+			   matchfound = true;
+			}
+			
+			/* WORKING!!! NEED ALT.
 			if (allPersonArray.get(i).matchLastname(searchPerson)) {
 				System.out.println(allPersonArray.get(i).toString());
 				matchfound = true;
-			}
+			}*/
 		}
 		if (!matchfound) {
 			System.out.println("\n" + "Sorry match not found.\n");

@@ -169,17 +169,20 @@ public class Person implements Serializable, Comparable<Person> {
 	 * Sets the value for phone to "newPhone". By: DA
 	 */
 	public void setPhone(String newPhone) {
-		
-		if (newPhone.length() > 10) {
-			
-			newPhone = newPhone.substring(0, 3) + "-" + newPhone.substring(3, 6) + "-" + newPhone.substring(6, newPhone.length());
+		Scanner userInput;
+		userInput = new Scanner(System.in);
+		if (newPhone.length() > 13) {
 			phone = newPhone;
-			
 		}
 		else if (newPhone.length() == 10) {
 			newPhone = newPhone.substring(0, 3) + "-" + newPhone.substring(3, 6) + "-" + newPhone.substring(6, newPhone.length());
 			phone = newPhone;
-			
+		}
+		else {
+			System.out.println("Invalid phone format, please use \"###-###-####\"");
+			System.out.print("Re-enter phone: ");
+			newPhone = userInput.nextLine();
+			phone = newPhone;
 		}
 
 	}

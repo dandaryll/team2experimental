@@ -53,6 +53,7 @@ public class Person implements Serializable, Comparable<Person> {
 		System.out.print("Last name: ");
 		newLastname = userInput.nextLine();
 		if (newLastname.equals("")) {
+			System.out.println("Contact information not added. Last name required.");
 			return false;
 		}
 		setLastname(newLastname);
@@ -66,6 +67,7 @@ public class Person implements Serializable, Comparable<Person> {
 		System.out.print("Notes: ");
 		String newNotes = userInput.nextLine();
 		setNotes(newNotes);
+		System.out.println("Contact information has been added successfully!");
 		return true;
 	}
 	

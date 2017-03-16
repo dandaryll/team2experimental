@@ -47,7 +47,7 @@ public class AllContactList implements Serializable {
 	public void printToConsole() {
 		int index = 0;
 		while (allPersonArray.size() > index) {
-			System.out.println("\n" + allPersonArray.get(index));
+			System.out.println("\n" + allPersonArray.get(index) + "\n");
 			index++;
 		}
 	}
@@ -108,10 +108,7 @@ public class AllContactList implements Serializable {
 	}
 
 	public void open() {
-		
-		System.out.println("Reading File!");
-		
-		
+		System.out.println("Initializing...Please wait.");
 		FileInputStream inFile;
 		ObjectInputStream inObject;
 
@@ -136,7 +133,7 @@ public class AllContactList implements Serializable {
 			c.printStackTrace();
 			return;
 		}
-		System.out.println("Contact List size: " + allPersonArray.size());
+		System.out.println("Current Contact List entries: " + allPersonArray.size());
 		
 	}
 

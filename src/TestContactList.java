@@ -34,23 +34,21 @@ public class TestContactList {
 			case "1":
 				newContact = new Person();
 				newContact.read();
-				System.out.println("Contact information has been added successfully!");
 				addressbook.addContact(newContact);
 				addressbook.sortAllContact();
-				addressbook.printToConsole();
 				break;
 			case "2":
 				addressbook.printToConsole();
 				break;
 			case "3":
-				addressbook.save();
-				done = true;
-				break;
-			case "4":
 				System.out.print("\nEnter last name to search: ");
 				String searchPerson = userInput.nextLine();
 				System.out.println("Search results: ");
 				addressbook.searchLastName(searchPerson);
+				break;
+			case "4":
+				addressbook.save();
+				done = true;
 				break;
 			default:
 				System.out.println("Please select from 1-3");

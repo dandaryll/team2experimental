@@ -22,7 +22,6 @@ import java.util.Scanner;
 public class AllContactList implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Scanner userInput;
-	private Person object1;
 	private ArrayList<Person> allPersonArray = new ArrayList<Person>(); // Arraylist that store one object of one person info
 	
 	/**
@@ -31,7 +30,6 @@ public class AllContactList implements Serializable {
 	 */
 	public void addContact(Person newPerson) {
 		allPersonArray.add(newPerson);
-		
 	}
 
 	// FIXME: Not sure if needed and what to comment
@@ -49,7 +47,7 @@ public class AllContactList implements Serializable {
 	public void printToConsole() {
 		int index = 0;
 		while (allPersonArray.size() > index) {
-			System.out.println(allPersonArray.get(index));
+			System.out.println("\n" + allPersonArray.get(index));
 			index++;
 		}
 	}
@@ -84,30 +82,19 @@ public class AllContactList implements Serializable {
 		if (!matchfound) {
 			System.out.println("\n" + "Sorry match not found.\n");
 		}
-		/*while (allPersonArray.size() > index) {
-			if (allPersonArray.get(index).matchLastname(searchPerson)) {
-				System.out.println(allPersonArray.get(index).toString());
-				found = true;
-			}
-			index++;
-		}
-		if (!found) {
-			System.out.println("\n" + "Sorry match not found.\n");
-		}*/
-
 	}
 
 	/**
 	 * This method saves all entries to the contact list program to disk then
 	 * exits the program.
 	 */
-	public void save(String filename) {
+	public void save() {
 		System.out.println("Writing file!");
 		
 		FileOutputStream outFile;
 		ObjectOutputStream outObject;
 		try {
-			outFile = new FileOutputStream(filename);
+			outFile = new FileOutputStream("Contactlist 2.0.sav");
 			outObject = new ObjectOutputStream(outFile);
 			
 			outObject.writeObject(allPersonArray);
@@ -120,7 +107,7 @@ public class AllContactList implements Serializable {
 
 	}
 
-	public void open(String filename) {
+	public void open() {
 		
 		System.out.println("Reading File!");
 		
@@ -129,7 +116,7 @@ public class AllContactList implements Serializable {
 		ObjectInputStream inObject;
 
 		try {
-			inFile = new FileInputStream(filename);
+			inFile = new FileInputStream("Contactlist 2.0.sav");
 			inObject = new ObjectInputStream(inFile);
 			
 			allPersonArray = (ArrayList<Person>)inObject.readObject();

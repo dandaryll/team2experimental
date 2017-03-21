@@ -28,8 +28,12 @@ public class AllContactList implements Serializable {
 	 * This method adds a person object information to the ArrayList allPersonArray
 	 * By: DA
 	 */
-	public void addContact(Person newPerson) {
+	public boolean addContact(Person newPerson) {
+		if (newPerson.getLastname().equals("")) {
+			return false;
+		}
 		allPersonArray.add(newPerson);
+		return true;
 		
 	}
 

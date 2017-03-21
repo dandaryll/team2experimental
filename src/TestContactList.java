@@ -18,7 +18,7 @@ public class TestContactList {
 		showMenu();
 
 		System.out.println("Reached the end of main(), Program ran successfully.");
-
+		System.out.println("Thank you for using the ContactLister2.0!");
 	}
 	
 	/**

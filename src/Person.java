@@ -51,13 +51,13 @@ public class Person implements Serializable, Comparable<Person> {
 		String newFirstname = userInput.nextLine();
 		if (newFirstname.equalsIgnoreCase("0"))
 			return false;
-		setFirstname(newFirstname);
 		System.out.print("Last name or Press [0] to cancel: ");
 		newLastname = userInput.nextLine();
 		if (newLastname.equals("") || newLastname.equalsIgnoreCase("0")) {
 			System.out.println("Contact information not added. Last name required.");
 			return false;
 		}
+		setFirstname(newFirstname);
 		setLastname(newLastname);
 		readAddress();
 		System.out.print("E-mail or Press [0] to cancel: ");
@@ -104,6 +104,7 @@ public class Person implements Serializable, Comparable<Person> {
 	 * Sets the value for firstname to "newFirstname". By: DA
 	 */
 	public boolean setFirstname(String newFirstname) {
+		//  removed
 		if (newFirstname.equalsIgnoreCase("0")) {
 			TestContactList.showMenu();
 			return false;

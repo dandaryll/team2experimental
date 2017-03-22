@@ -321,7 +321,10 @@ public class Person implements Serializable, Comparable<Person> {
 		return "Name: " + firstName + " " + lastName + "\n" + "Address: " + house + " " + city + ", " +
 			   state + " " + zip + "\n" + "E-mail: " + email + "\n" + "Phone: " + phone + "\n" + "Notes: " + notes;
 	}
-
+	
+	/**
+	 * This method returns a positive if this.lastname alphabetical order is before the otherPerson.lastName
+	 */
 	@Override
 	public int compareTo(Person otherPerson) {
 		if (this.lastName.equalsIgnoreCase(otherPerson.lastName)) {

@@ -28,12 +28,11 @@ public class AllContactList implements Serializable {
 	 * This method adds a person object information to the ArrayList allPersonArray
 	 * By: DA
 	 */
-	public boolean addContact(Person newPerson) {
+	public void addContact(Person newPerson) {
 		if (newPerson.getLastname().equals("")) {
-			return false;
+			return;
 		}
 		allPersonArray.add(newPerson);
-		return true;
 		
 	}
 
@@ -75,23 +74,49 @@ public class AllContactList implements Serializable {
 	/**
 	 * This method returns and prints the search result according to last name.
 	 */
+	/*
 	public void searchLastName(String searchPerson) {
 		boolean matchfound = false;
+		
 		for (int i = 0; i < allPersonArray.size(); i++) {
+			/*
 			if(searchPerson.equalsIgnoreCase(allPersonArray.toString())) {
 			   System.out.println(allPersonArray.get(i).toString());
 			   matchfound = true;
 			}
 			
-			/* WORKING!!! NEED ALT.
+			
+			// WORKING!!! NEED ALT.
 			if (allPersonArray.get(i).matchLastname(searchPerson)) {
 				System.out.println(allPersonArray.get(i).toString());
 				matchfound = true;
-			}*/
+			}
 		}
 		if (!matchfound) {
 			System.out.println("\n" + "Sorry match not found.\n");
+			matchfound = false;
 		}
+	}
+	*/
+	public Person searchByLastName () {
+
+		String givenLastName = userInput.nextLine();
+
+		for (int i = 0; i < allPersonArray.size(); i++) {
+
+			Person foundByLastName = allPersonArray.get(i);
+
+			if (foundByLastName.getLastname().equals(givenLastName)) {
+
+				foundByLastName = allPersonArray.get(i++);
+
+				return foundByLastName ;
+
+			}
+
+
+		}
+		return null;
 	}
 
 	/**

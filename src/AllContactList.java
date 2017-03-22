@@ -98,15 +98,15 @@ public class AllContactList implements Serializable {
 		}
 	}
 	*/
-	public Person searchByLastName () {
+	public Person searchByLastName (String searchLastname) {
 
-		String givenLastName = userInput.nextLine();
+		//String givenLastName = userInput.nextLine();
 
 		for (int i = 0; i < allPersonArray.size(); i++) {
 
 			Person foundByLastName = allPersonArray.get(i);
 
-			if (foundByLastName.getLastname().equals(givenLastName)) {
+			if (foundByLastName.getLastname().equals(searchLastname)) {
 
 				foundByLastName = allPersonArray.get(i++);
 

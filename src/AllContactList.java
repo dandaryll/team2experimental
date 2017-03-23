@@ -99,11 +99,11 @@ public class AllContactList implements Serializable {
 		}
 	}
 	*/
-	public void searchByLastName() {
+	public void searchByLastName(String searchPerson) {
 		boolean found = false;
-		String givenLastName = userInput.nextLine();
+		
 		for (int i = 0; i < allPersonArray.size(); i++) {
-				if (allPersonArray.get(i).getLastname().equals(givenLastName)) {
+				if (allPersonArray.get(i).getLastname().equals(searchPerson)) {
 					System.out.println("\n" + allPersonArray.get(i));
 					found = true;
 				}

@@ -1,5 +1,5 @@
 /**
- * This class represents an object that stores the first name, last name, email, phone, and  notes for one person.
+ * This class represents an object that stores the first name, last name, address, email, phone, and  notes for one person.
  * 
  * By: DA
  */
@@ -22,6 +22,8 @@ public class Person implements Serializable, Comparable<Person> {
 	
 	/**
 	 * Default constructor to initialize private data members
+	 * 
+	 * By: DA
 	 */
 	public Person() {
 		firstName   = "";
@@ -38,9 +40,10 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 	
 	/**
-	 * This methods reads userInput for firstname, lastname, address, email address,
-	 * phone, and notes user input for Person class private data member
-	 * variables
+	 * This method reads userInput and prompts user to assign values to firstName, lastName,
+	 * email, phone and notes
+	 * 
+	 * By: DA
 	 */
 	public boolean read() {
 		Scanner userInput;
@@ -80,13 +83,13 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 	
 	/**
-	 * This methods reads userInput for house, city, state, and zip. userInput
-	 * for Address class private data member variables
+	 * This methods reads userInput and prompts user to assign values for house, city, state, and zip.
 	 */
 	public void readAddress() {
 		Scanner userInput;
 		userInput = new Scanner(System.in);
-		System.out.print("House or Press [0] to cancel: ");
+		System.out.print("House: ");
+		System.out.println("Press [0] to cancel");
 		String newHouse = userInput.nextLine();
 		setHouse(newHouse);
 		System.out.print("City or Press [0] to cancel: ");
@@ -101,7 +104,8 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 	
 	/**
-	 * Sets the value for firstname to "newFirstname". By: DA
+	 * Sets the value for firstname to "newFirstname".
+	 * By: DA
 	 */
 	public boolean setFirstname(String newFirstname) {
 		//  removed
@@ -115,7 +119,8 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 
 	/**
-	 * Sets the value for lastname to "newLastname". By: DA
+	 * Sets the value for lastname to "newLastname".
+	 * By: MM
 	 */
 	public boolean setLastname(String newLastname) {
 		if (newLastname.equals("")) {
@@ -170,7 +175,7 @@ public class Person implements Serializable, Comparable<Person> {
 
 	/**
 	 * Sets the value for zip to "newZip".
-	 * By: DA
+	 * By: MM
 	 */
 	public boolean setZip(String newZip) { // newZip is a parameter
 		if (newZip.equalsIgnoreCase("0")) {
@@ -182,7 +187,8 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 
 	/**
-	 * Sets the value for email to "newEmail". By: DA
+	 * Sets the value for email to "newEmail".
+	 * By: MM
 	 */
 	public boolean setEmail(String newEmail) {
 		Scanner userInput;
@@ -206,7 +212,8 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 
 	/**
-	 * Sets the value for phone to "newPhone". By: DA
+	 * Sets the value for phone to "newPhone".
+	 * By: MM
 	 */
 	public boolean setPhone(String newPhone) {
 		Scanner userInput;
@@ -247,14 +254,16 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 
 	/**
-	 * Returns the value of firstname. By: DA
+	 * Returns the value of firstname.
+	 * By: MM
 	 */
 	public String getFirstname() {
 		return firstName;
 	}
 
 	/**
-	 * Returns the value of lastname. By: DA
+	 * Returns the value of lastname.
+	 * By: MM
 	 */
 	public String getLastname() {
 		return lastName;
@@ -262,7 +271,7 @@ public class Person implements Serializable, Comparable<Person> {
 	
 	/**
 	 * Returns the value of house.
-	 * By: DA
+	 * By: MM
 	 */
 	public String getHouse () {
 		return house;
@@ -270,7 +279,7 @@ public class Person implements Serializable, Comparable<Person> {
 	
 	/**
 	 * Returns the value of city.
-	 * By: DA
+	 * By: JT
 	 */
 	public String getCity () {
 		return city;
@@ -278,7 +287,7 @@ public class Person implements Serializable, Comparable<Person> {
 	
 	/**
 	 * Returns the value of state.
-	 * By: DA
+	 * By: JT
 	 */
 	public String getState () {
 		return state;
@@ -286,37 +295,46 @@ public class Person implements Serializable, Comparable<Person> {
 	
 	/**
 	 * Returns the value of zip.
-	 * By: DA
+	 * By: JT
 	 */
 	public String getZip () {
 		return zip;
 	}
 
 	/**
-	 * Returns the value of email. By: DA
+	 * Returns the value of email.
+	 * By: JT
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
-	 * Returns the value of phone. By: DA
+	 * Returns the value of phone.
+	 * By: JT
 	 */
 	public String getPhone() {
 		return phone;
 	}
 
 	/**
-	 * Returns the value of zip. By: DA
+	 * Returns the value of zip.
+	 * By: JT
 	 */
 	public String getNotes() {
 		return notes;
 	}
 	
+	/* not needed pls use nat version
 	public boolean matchLastname(String lastNameToMatch) {
 		return (this.lastName.equalsIgnoreCase(lastNameToMatch));
 	}
+	*/
 	
+	/**
+	 * This method returns a toString.
+	 * By: JT
+	 */
 	public String toString() { 
 		return "Name: " + firstName + " " + lastName + "\n" + "Address: " + house + " " + city + ", " +
 			   state + " " + zip + "\n" + "E-mail: " + email + "\n" + "Phone: " + phone + "\n" + "Notes: " + notes;
@@ -324,6 +342,9 @@ public class Person implements Serializable, Comparable<Person> {
 	
 	/**
 	 * This method returns a positive if this.lastname alphabetical order is before the otherPerson.lastName
+	 * if it returns a value of 0 it means it equal
+	 * if it returns a value > 0 = 1 it means it this.lastname goes first in alphabet
+	 * if it returns a negative value it means this.lastname order is after the otherPerson 
 	 */
 	@Override
 	public int compareTo(Person otherPerson) {

@@ -1,8 +1,7 @@
 /**
- * This class represents an object that represents how the contact list is printed as a whole. Also, 
- * one object of this class represents the search feature that find matches based on last name
- * and displaying them on the console. Another feature is save on exit where all contact list 
- * entries are stored in disk and reopens on the next run of the program.
+ * This class represents an object that represents the whole list of contacts. The class AllContactList also
+ * contains methods that can print the whole contact list, add to the contact list, search from the contact list,
+ * save and open to disk the whole list of contacts.
  * 
  * By: DA
  */
@@ -25,8 +24,10 @@ public class AllContactList implements Serializable {
 	private ArrayList<Person> allPersonArray = new ArrayList<Person>(); // Arraylist that store one object of one person info
 	
 	/**
-	 * This method adds a person object information to the ArrayList allPersonArray
-	 * By: DA
+	 * This method adds a person object information to the ArrayList
+	 * allPersonArray
+	 * 
+	 * By: JT
 	 */
 	public void addContact(Person newPerson) {
 		if (newPerson.getLastname().equals("")) {
@@ -47,6 +48,8 @@ public class AllContactList implements Serializable {
 	/**
 	 * This method returns and prints all entries of the contact list sorted
 	 * alphabetically.
+	 * 
+	 * By: JT ----------------------------------------------------------------------------------------****** Back to fix you later
 	 */
 	public void printToConsole() {
 		int index = 0;
@@ -57,7 +60,10 @@ public class AllContactList implements Serializable {
 	}
 
 	/**
-	 * This method sorts the array list last name in alphabetical order. By: DA
+	 * This method sorts the array list last name elements in alphabetical
+	 * order.
+	 * 
+	 * By: JT
 	 */
 	public void sortAllContact() {
 		Collections.sort(allPersonArray);
@@ -65,14 +71,9 @@ public class AllContactList implements Serializable {
 	}
 
 	/**
-	 * This method sorts the array list first name in alphabetical order. By: DA
-	 */
-	public void sortFirstName() {
-
-	}
-
-	/**
-	 * This method returns and prints the search result according to last name.
+	 * This method prints the search result according to the userInput last name.
+	 * 
+	 * By: MM
 	 */
 	/*
 	public void searchLastName(String searchPerson) {
@@ -98,30 +99,24 @@ public class AllContactList implements Serializable {
 		}
 	}
 	*/
-	public Person searchByLastName (String searchLastname) {
-
-		//String givenLastName = userInput.nextLine();
-
+	public void searchByLastName() {
+		boolean found = false;
+		String givenLastName = userInput.nextLine();
 		for (int i = 0; i < allPersonArray.size(); i++) {
-
-			Person foundByLastName = allPersonArray.get(i);
-
-			if (foundByLastName.getLastname().equals(searchLastname)) {
-
-				foundByLastName = allPersonArray.get(i++);
-
-				return foundByLastName ;
-
+				if (allPersonArray.get(i).getLastname().equals(givenLastName)) {
+					System.out.println("\n" + allPersonArray.get(i));
+					found = true;
+				}
 			}
-
-
-		}
-		return null;
+			if (!found) {
+				System.out.println("We are sorry, but we have no contact information under that last name");
+			}
 	}
 
 	/**
-	 * This method saves all entries to the contact list program to disk then
-	 * exits the program.
+	 * This method saves all entries to the contact list program to disk.
+	 * 
+	 * By: DA
 	 */
 	public void save() {
 		System.out.println("Writing file!");
@@ -141,7 +136,12 @@ public class AllContactList implements Serializable {
 		}
 
 	}
-
+	
+	/**
+	 * This method reads the saved file when the program starts
+	 * 
+	 * By: DA
+	 */
 	public void open() {
 		System.out.println("Initializing...Please wait.");
 		FileInputStream inFile;

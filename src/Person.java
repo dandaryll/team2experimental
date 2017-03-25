@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
- * This class represents an object that stores the first name, last name, house, city, state, zip, email, phone, and  notes for one person.
-=======
  * This class represents an object that stores the first name, last name, address, email, phone, and  notes for one person.
->>>>>>> branch 'master' of https://github.com/dandaryll/team2experimental.git
  * 
  * By: DA
  */
@@ -47,11 +43,7 @@ public class Person implements Serializable, Comparable<Person> {
 	 * This method reads userInput and prompts user to assign values to firstName, lastName,
 	 * email, phone and notes
 	 * 
-<<<<<<< HEAD
-	 * By: MM
-=======
 	 * By: DA
->>>>>>> branch 'master' of https://github.com/dandaryll/team2experimental.git
 	 */
 	public boolean read() {
 		Scanner userInput;
@@ -91,13 +83,7 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 	
 	/**
-<<<<<<< HEAD
-	 * This methods reads userInput for address section which are the house, city, state, and zip.
-	 * 
-	 * By: DA
-=======
 	 * This methods reads userInput and prompts user to assign values for house, city, state, and zip.
->>>>>>> branch 'master' of https://github.com/dandaryll/team2experimental.git
 	 */
 	public void readAddress() {
 		Scanner userInput;
@@ -134,11 +120,7 @@ public class Person implements Serializable, Comparable<Person> {
 
 	/**
 	 * Sets the value for lastname to "newLastname".
-<<<<<<< HEAD
-	 * By: DA
-=======
 	 * By: MM
->>>>>>> branch 'master' of https://github.com/dandaryll/team2experimental.git
 	 */
 	public boolean setLastname(String newLastname) {
 		if (newLastname.equals("")) {
@@ -260,8 +242,7 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 
 	/**
-	 * Sets the value for notes to "newNotes".
-	 * By: MM 
+	 * Sets the value for notes to "newNotes". By: DA
 	 */
 	public boolean setNotes(String newNotes) {
 		if (newNotes.equalsIgnoreCase("0")) {
@@ -344,27 +325,14 @@ public class Person implements Serializable, Comparable<Person> {
 		return notes;
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * This method returns the lastname that matches the search query from main "lastNameToMatch" and acts as a boolean so it can be used
-	 * for the searchLastname method in class AllContactList.
-	 * By: JT
-	 */
-=======
 	/* not needed pls use nat version
->>>>>>> branch 'master' of https://github.com/dandaryll/team2experimental.git
 	public boolean matchLastname(String lastNameToMatch) {
 		return (this.lastName.equalsIgnoreCase(lastNameToMatch));
 	}
 	*/
 	
 	/**
-<<<<<<< HEAD
-	 * This method returns a toString of all the private data members in class Person e.g. firstName, lastName, house, city, state,
-	 * zip, email, phone, and notes.
-=======
 	 * This method returns a toString.
->>>>>>> branch 'master' of https://github.com/dandaryll/team2experimental.git
 	 * By: JT
 	 */
 	public String toString() { 
@@ -373,19 +341,10 @@ public class Person implements Serializable, Comparable<Person> {
 	}
 	
 	/**
-<<<<<<< HEAD
-	 * FIXME: COMMENT NEEDS TO BE REVISED BASED ON ELAINE'S FEEDBACK 3/21/17 12:54PM
-	 * One of the methods that calls this methods is Collections.sort in class AllContactList used for alphabetizing lastnames and firstnames.
-	 * When this.lastname object occurs before alphabetically compared to the otherPerson.lastName object it will return a positive number.
-	 * However, when this.lastname object is alphabetically ordered after the otherPerson.lastName it will return a negative number.
-	 * Then, if the the two objects compared "this.lastName" and "otherPerson.lastName" are equal it will return a "0" value.
-	 * By: JT
-=======
 	 * This method returns a positive if this.lastname alphabetical order is before the otherPerson.lastName
 	 * if it returns a value of 0 it means it equal
 	 * if it returns a value > 0 = 1 it means it this.lastname goes first in alphabet
 	 * if it returns a negative value it means this.lastname order is after the otherPerson 
->>>>>>> branch 'master' of https://github.com/dandaryll/team2experimental.git
 	 */
 	@Override
 	public int compareTo(Person otherPerson) {

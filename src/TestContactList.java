@@ -47,8 +47,7 @@ public class TestContactList {
 				System.out.print("\nEnter last name to search: ");
 				String searchPerson = userInput.nextLine();
 				System.out.println("Search results: ");
-				//nat version System.out.println(addressbook.searchByLastName(searchPerson));
-				addressbook.searchLastName(searchPerson);
+				addressbook.searchByLastName(searchPerson);
 				break;
 			case "4":
 				addressbook.save();

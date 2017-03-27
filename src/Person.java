@@ -21,25 +21,6 @@ public class Person implements Serializable, Comparable<Person> {
 	private String newLastname;
 	
 	/**
-	 * Default constructor to initialize private data members
-	 * 
-	 * By: DA
-	 */
-	public Person() {
-		firstName   = "";
-		lastName    = "";
-		house       = "";
-		city        = "";
-		state       = "";
-		zip         = "";
-		email       = "";
-		phone       = "";
-		notes       = "";
-		newLastname = "";
-		
-	}
-	
-	/**
 	 * This method reads userInput and prompts user to assign values to firstName, lastName,
 	 * email, phone and notes
 	 * 
@@ -349,10 +330,10 @@ public class Person implements Serializable, Comparable<Person> {
 	@Override
 	public int compareTo(Person otherPerson) {
 		if (this.lastName.equalsIgnoreCase(otherPerson.lastName)) {
-			return this.firstName.compareTo(otherPerson.firstName);
+			return this.firstName.compareToIgnoreCase(otherPerson.firstName);
 		}
 		
-		return this.lastName.compareTo(otherPerson.lastName);
+		return this.lastName.compareToIgnoreCase(otherPerson.lastName);
 	}
 
 }

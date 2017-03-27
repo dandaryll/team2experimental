@@ -88,8 +88,7 @@ public class Person implements Serializable, Comparable<Person> {
 	public void readAddress() {
 		Scanner userInput;
 		userInput = new Scanner(System.in);
-		System.out.print("House: ");
-		System.out.println("Press [0] to cancel");
+		System.out.print("House: or Press [0] to cancel");
 		String newHouse = userInput.nextLine();
 		setHouse(newHouse);
 		System.out.print("City or Press [0] to cancel: ");
